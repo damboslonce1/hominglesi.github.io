@@ -1,98 +1,103 @@
-var winner = 0;
-var lastWinner = 0;
-var p1Wins = 0;
-var p2Wins = 0;
+let circles = [];
+
+let timer = 0;
+
+let canvas;
+
+let imgCircle;
+let imgInnerCircle;
+let imgCursor;
+
+function preLoad(){
+
+}
 
 function setup() {
- createCanvas(640,480);
+  imgCircle = loadImage("assets/circle.png");
+  imgInnerCircle = loadImage("assets/innercircle.png")
+  imgCursor = loadImage("assets/cursor.png")
+  canvas = createCanvas(1920,1080);
+  canvas.position(0,0);
+  frameRate(60);
 }
 
 function draw() {
-  background(0,255,235);
-  fill(255);
-  stroke(0);
-  ellipse(150,230,170,250);
-  ellipse(470,230,170,250);
-  noStroke();
-  textSize(32);
-
-  if(lastWinner==1){
-    p2Wins = p2Wins + 1;
-    lastWinner=0;
-  }else if(lastWinner==2){
-    p1Wins = p1Wins + 1;
-    lastWinner=0;
+  background(0);
+  if (timer < 25){
+    timer = timer + 1;
+  } else {
+  let temp = new Circle(150);
+  circles.push(temp);
+  timer=0;
+  }
+  for(let i of circles){
+    i.show();
   }
 
-  drawButton();
-
-  printText();
-
+  image(imgCursor,mouseX-40,mouseY-40,80,80);
 }
-
-function mousePressed(){
-  noStroke();
-  if(mouseX>200 && mouseX<400 && mouseY>40 && mouseY<100){
-  winner = Math.round(random(1,2));
-  lastWinner = winner;
+function keyPressed(){
+  for(let i of circles){
+    i.clicked();
   }
-  print(mouseX + " " + mouseY)
-
 }
 
-function printText(){
-  noStroke();
-
-  text('P1', 130, 90);
-  text('P2', 450, 90);
-
-  if (winner==1){
-    P1Crack();
-    noStroke();
-    text('P2 Wins', 250, 180);
-    p1Wins=0;
-  }else if (winner==2){
-    P2Crack();
-    noStroke();
-    text('P1 Wins', 250, 300);
-    p2Wins=0;
+class Circle{
+  constructor(r){
+    this.x = random(width);
+    this.y = random(height);
+    this.r = r;
+    this.visible = true;
+    this.timer=50;
+    this.score=0;
+    this.afterscore=0;
+    this.pointpressed=0;
+    while(this.x<this.r/2 || this.x > width-this.r/2){
+      this.x = random(width);
+    }
+    while(this.y<this.r/2 || this.y > height-this.r/2){
+      this.y = random(height);
+    }
   }
 
-  if(p2Wins!=0){
-    text('P2 Streak:'+p2Wins, 240, 400);
+  show(){
+    if (this.visible==true){
+      if(this.timer>0){
+        noFill();
+        stroke(255);
+        strokeWeight(4);
+        ellipse(this.x,this.y,map(this.timer,0,50,this.r-10,this.r+100));
+      }
+      image(imgCircle,this.x-this.r/2,this.y-this.r/2,this.r,this.r);
+      image(imgInnerCircle,this.x-this.r/2,this.y-this.r/2,this.r,this.r);
+    } else if(this.afterscore>0){
+      textSize(32);
+      text(this.score,this.x,this.y);
+      this.afterscore = this.afterscore - 1;
+    }
+    this.timer=this.timer-1;
   }
-  if(p1Wins!=0){
-    text('P1 Streak:'+p1Wins, 240, 400);
+
+  clicked(){
+    if(dist(mouseX,mouseY,this.x,this.y)<this.r/2){
+      if(keyCode==90 || keyCode==88 || keyCode==89 || keyCode==87){
+        if(this.visible==true){
+          if(this.timer>25){
+            this.score="50";
+          }else if(this.timer>15){
+            this.score="100";
+          }else if(this.timer>-10){
+            this.score="300";
+          }else{
+            this.score="late";
+          }
+          this.visible=false;
+          this.afterscore=30;
+        }
+      }
+    }
+
   }
 
-}
 
-function drawButton(){
-  noStroke();
-  fill(69,169,221);
-  rect(200,40,200,60);
-}
-
-
-function P1Crack(){
-  stroke(0);
-  line(65,250,75,230);
-  line(75,230,100,290);
-  line(100,290,140,255);
-  line(140,255,145,260);
-  line(145,260,165,230);
-  line(165,230,195,255);
-  line(195,255,225,225);
-  line(225,225,235,235);
-}
-function P2Crack(){
-  stroke(0);
-  line(385,250,410,230);
-  line(410,230,435,265);
-  line(435,265,450,250);
-  line(450,250,455,255);
-  line(455,255,480,220);
-  line(480,220,500,245);
-  line(500,245,525,250);
-  line(525,250,545,285);
 }
