@@ -27,7 +27,7 @@ function CreateLvImage(name){
 
   var img = document.createElement("img");
   img.classList += "lvImage";
-  img.src = "img/" + name + ".jpg";
+  img.src = "img/" + name.toLowerCase() + ".jpg";
   div.appendChild(img);
 
   return div;
