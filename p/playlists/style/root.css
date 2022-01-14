@@ -1,0 +1,22 @@
+@font-face {
+  font-family: Raleway-Regular;
+  src: url("../fonts/Raleway-Regular.ttf");
+}
+
+@font-face {
+  font-family: SplineSans-Regular;
+  src: url("../fonts/SplineSans-Regular.ttf");
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-bg-color: rgb(40,44,52);;
+
+  --lv-item-height: 250px;
+  --lv-image-padding: 20px;
+}
