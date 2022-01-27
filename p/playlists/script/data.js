@@ -11,10 +11,18 @@ playlistData.push(polaroid);
 var luna = new Object();
 luna.name = "Luna";
 luna.url = "https://open.spotify.com/playlist/2F9yGQU8cAXeJURrz5WC3J?si=49832d302df24c32";
-luna.status = "Pending";
+luna.status = "Finished";
 luna.creator = "hominglesi";
 luna.emoji = "😀";
 playlistData.push(luna);
+
+var evening = new Object();
+evening.name = "Eve(ning)";
+evening.url = "https://open.spotify.com/playlist/1t7bK2Le3Msr6V7grFnUDg?si=b4dc9b61bbca4d1c";
+evening.status = "Finished";
+evening.creator = "Aleksandar Solarov";
+evening.emoji = "🌆";
+playlistData.push(evening);
 
 var abyss = new Object();
 abyss.name = "Abyss";
