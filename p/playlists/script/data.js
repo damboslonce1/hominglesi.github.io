@@ -24,13 +24,13 @@ evening.creator = "Aleksandar Solarov";
 evening.emoji = "🌆";
 playlistData.push(evening);
 
-var funny_songs = new Object();
-funny_songs.name = "Funny Songs";
-funny_songs.url = "https://open.spotify.com/playlist/6rMVVGnzOKMiOJrzbbQkhB?si=5ee5994315624070";
-funny_songs.status = "Pending";
-funny_songs.creator = "hominglesi";
-funny_songs.emoji = "🤩";
-playlistData.push(funny_songs);
+var rosary = new Object();
+rosary.name = "Rosary";
+rosary.url = "https://open.spotify.com/playlist/6rMVVGnzOKMiOJrzbbQkhB?si=5ee5994315624070";
+rosary.status = "Finished";
+rosary.creator = "hominglesi";
+rosary.emoji = "🤩";
+playlistData.push(rosary);
 
 var abyss = new Object();
 abyss.name = "Abyss";
