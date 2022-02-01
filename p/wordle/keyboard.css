@@ -1,0 +1,12 @@
+.keyboard-row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.letter-button{
+    background-color: var(--keyboard-button-color);
+    color: var(--keyboard-text-color);
+    width: 32px;
+    height: 48px;
+}
