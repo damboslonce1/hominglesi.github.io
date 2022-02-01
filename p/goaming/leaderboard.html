@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goaming Leaderboard</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="data.js" defer></script>
+    <script src="data_script.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="selection-bar sel-bar-1">
+        <div class="selection-item" onclick="SetCurrentView(currentStage, currentDifficulty, 'V0.1');">V0.1</div>
+    </div>
+    <div class="selection-bar sel-bar-2">
+        <div class="selection-item" onclick="SetCurrentView('mikicBoss', currentDifficulty, currentVersion);">Mikic Boss</div>
+    </div>
+    <div class="selection-bar sel-bar-3">
+        <div class="selection-item" onclick="SetCurrentView(currentStage, 'easy', currentVersion);">Easy</div>
+        <div class="selection-item" onclick="SetCurrentView(currentStage, 'normal', currentVersion);">Normal</div>
+        <div class="selection-item" onclick="SetCurrentView(currentStage, 'hard', currentVersion);">Hard</div>
+        <div class="selection-item" onclick="SetCurrentView(currentStage, 'insane', currentVersion);">Insane</div>
+    </div>
+    
+    <div class="leaderboard-container"></div>
+    
+</body>
+</html>
